@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -target x86_64-w64-mingw32")
+# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -target x86_64-w64-mingw32")
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-project(miroir-playground)
+project("miroir-playground")
 
 find_package(miroir 1.0.0.0 EXACT REQUIRED)
 

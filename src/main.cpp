@@ -28,7 +28,7 @@ int main()
 {
     position pos{};
 
-    std::cout << pos << std::endl;
+   // std::cout << pos << std::endl;
     
     // Gets `y` field then sets `y` of `pos` to 8.
     miroir::get_field_info<position, "y">::set(pos, 8);
@@ -38,7 +38,9 @@ int main()
     miroir::get_method_info<position, "move">::invoke(pos, 4, -4);
     miroir::invoke<"move">(pos, 4, -4);
     
-    std::cout << pos << std::endl;
+    auto x = pos.x;
+
+    std::cout << x << std::endl;
     
     return 0;
 }
