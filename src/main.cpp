@@ -2,6 +2,7 @@
 
 #include <miroir/type.hpp>
 #include <miroir/ostream.hpp>
+#include <assert.h>
 
 struct position
 {
@@ -30,6 +31,8 @@ int main()
 
    // std::cout << pos << std::endl;
     
+    constexpr miroir::const_string x = "x";
+
     // Gets `y` field then sets `y` of `pos` to 8.
     miroir::get_field_info<position, "y">::set(pos, 8);
     miroir::set<"x">(pos, 4.2f);
@@ -38,9 +41,17 @@ int main()
     miroir::get_method_info<position, "move">::invoke(pos, 4, -4);
     miroir::invoke<"move">(pos, 4, -4);
     
-    auto x = pos.x;
+    auto pos_x = pos.x;
+    
+    miroir::set<x>(pos, 4.2f);
 
-    std::cout << x << std::endl;
+    std::cout << x << pos_x << std::endl;
+
+    static_assert(x == "x", "expected x");
+    assert(pos_x == 12.2f);
+    
+
+    std::cin.get();
     
     return 0;
 }
